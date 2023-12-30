@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1>hi</h1>
-</body>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      fetch("/data")
+        .then((res) => res.json())
+        .then((data) => {
+            const container = document.getElementById('container')
+            container.innerHTML = ''
+           
+            data.forEach((item) => {
+                const paragraph = document.createElement('p')
+
+                paragraph.innerHTML  = (`${item.Name}, ${item.Age}`)
+
+                container.appendChild(paragraph)
+            });
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    </script>
+  </body>
 </html>

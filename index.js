@@ -6,9 +6,25 @@ const port = 3000
 app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 
-// Yesley chai kun file mero '/' Home page mah falni vaneko / vanna le jailey ni home ho index.html file
+const dummyArray = [{
+    'Name' : 'Anuraj',
+    'Age' : '20'
+},
+{
+    'Name' : 'kshitz',
+    'Age' : '20'
+},
+{
+    'Name' : 'Prakash',
+    'Age' : '20'
+}]
+
 app.get('/', (req, res) =>{
     res.sendFile(__dirname + '/views/index.html')
+})
+
+app.get('/data', (req , res) =>{
+   res.json(dummyArray) 
 })
 
 app.listen(port , (req, res) =>{
