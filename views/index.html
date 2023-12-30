@@ -12,7 +12,6 @@
         .then((res) => res.json())
         .then((data) => {
             const container = document.getElementById('container')
-            container.innerHTML = ''
            
             data.forEach((item) => {
                 const paragraph = document.createElement('p')
